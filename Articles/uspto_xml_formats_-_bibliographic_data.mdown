@@ -1,0 +1,59 @@
+# Introduction
+The following guide details the USPTO's "Red Book" XML DTD. It is very much a work in progress and it subject to "black boxing" due to the partially closed nature of some of the XML DTD.
+
+# XML Structure
+
+# us-patent-grant
+This element is the root element for each patent. Overall, a majority of the information is clerical in nature, however a few use cases may arise from the attributes:
+
+1. the `file` attribute provides a standard naming mechanism for each file. Note that the `file` attributes contains the issue date in addition to the patent number. Retrieval systems may wish to dispense of the issue date for easier lookup (e.g., single key->value)
+2. The `date-publ` attribute allows for instant access to the issue date (versus string processing of the `file` property or traversing the DOM)
+
+Example:
+
+`<us-patent-grant lang="EN" 
+           dtd-version="v4.2 2006-08-23"
+                  file="US07863507-20110104.XML"
+                status="PRODUCTION"
+                    id="us-patent-grant"
+               country="US"
+         date-produced="20101220"
+            date-publ="20110104">`
+
+Redbook:
+> The <us-patent-grant> element is mandatory and will occur one time identifying the beginning of a patent document. This root element contains within it all elements, content, and references to external entities that constitute the document.
+
+The `<us-patent-grant>` allows for the following attributes:
+
+* lang: (**REQUIRED**) generally "EN", or, presumably the document language (!)
+* dtd-version: the Red Book DTD version (currently 4.2 as of this writing)
+* file: the unique file name for this element. This element has the form USPPPPPPPP-YYYMMDD.XML, where PPPPPPPP is the patent number
+* status: (unclear) presumably this is the version of the file (e.g., development, production, draft etc.)
+* id: (unclear) consistently the string 'us-patent-grant'
+* country: (**REQUIRED**)
+* file-reference-id: implied attribute, rarely seen
+* date-produced: this appears to be the date the XML file was actually generated (produced). it is consistently exactly two weeks before `date-publ`
+* date-publ: issued (publication) date of the patent
+
+The `<us-patent-grant>` allows for the following child elements:
+
+* us-bibliographic-data-grant
+* abstract (zero or more)
+* drawings (zero or one)
+* description
+* us-sequence-list-doc (zero or one)
+* us-megatable-doc (zero or one)
+* table-external-doc (zero or more)
+* us-chemistry (zero or more)
+* us-math (zero or more)
+* us-claim-statement
+* claims
+
+Code 
+## us-bibliographic-data-grant
+
+
+## drawings
+## description
+## us-claim-statement
+## claims
