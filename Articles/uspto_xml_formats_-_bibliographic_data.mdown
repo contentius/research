@@ -3,7 +3,7 @@ The following guide details the USPTO's "Red Book" XML DTD. It is very much a wo
 
 # XML Structure
 
-# us-patent-grant
+# &lt;us-patent-grant&gt;: The Root of All Evil
 This element is the root element for each patent. Overall, a majority of the information is clerical in nature, however a few use cases may arise from the attributes:
 
 1. the `file` attribute provides a standard naming mechanism for each file. Note that the `file` attributes contains the issue date in addition to the patent number. Retrieval systems may wish to dispense of the issue date for easier lookup (e.g., single key->value)
@@ -50,10 +50,10 @@ The `<us-patent-grant>` allows for the following child elements:
 * `claims`
 
 Code 
-## us-bibliographic-data-grant
+## &lt;us-bibliographic-data-grant&gt;: Everything You Wanted to Know
 
 
-## drawings
-## description
-## us-claim-statement
-## claims
+## &lt;drawings&gt;
+## &lt;description&gt;
+## &lt;us-claim-statement&gt;
+## &lt;claims&gt;
